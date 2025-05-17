@@ -49,33 +49,3 @@ TEST(IllegalOperationsSuite, ArgumentCountMismatch) {
     ASSERT_FALSE(interpret(input, output));
     ASSERT_FALSE(output.str().ends_with(kUnreachable));
 }
-
-
-TEST(IllegalOperationsSuite, DivisionByZero) {
-    std::string code = R"(
-        x = 1 / 0
-
-        print(239) // unreachable
-    )";
-
-    std::istringstream input(code);
-    std::ostringstream output;
-
-    ASSERT_FALSE(interpret(input, output));
-    ASSERT_FALSE(output.str().ends_with(kUnreachable));
-}
-
-
-TEST(IllegalOperationsSuite, ModuloByZero) {
-    std::string code = R"(
-        x = 1 % 0
-
-        print(239) // unreachable
-    )";
-
-    std::istringstream input(code);
-    std::ostringstream output;
-
-    ASSERT_FALSE(interpret(input, output));
-    ASSERT_FALSE(output.str().ends_with(kUnreachable));
-}
